@@ -14,26 +14,20 @@ we can store and operate elements of integer type in unrolled Linked List.
 - `list.py` -- implementation of `UnrolledNode` class and `UnrolledLinkedList` class
 - with multiple functions, including adding, getting, setting, and removing elements,
 - as well as other advanced operations
-   Stateless.
 - `List_test.py` -- unit and PBT tests for `unrolled linked list`.
-
-## Features
-
-- PBT: `test_add_commutative`
 
 ## Contribution
 
 - `Hu Jinghao` (1206041060@qq.com)
-- Add all type annotations.
-- Implement most functions.
-- Implement most of the test.
+- all work
 
-- `Meng Chenxu` (xxx@qq.com) edited by `Hu Jinghao`. It still needs to be edited.
-- Implement all function.
-- Implement all test.
+- `Meng Chenxu` (3183093110@qq.com)
+- all work
 
 ## Changelog
 
+- 19.04.2024 - 4
+- Update README.
 - 19.04.2024 - 3
 - Add type annotations.
 - 19.04.2024 - 2
