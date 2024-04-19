@@ -1,5 +1,5 @@
 import unittest
-from hypothesis import given, strategies
+# from hypothesis import given, strategies
 from list import UnrolledLinkedList
 
 
