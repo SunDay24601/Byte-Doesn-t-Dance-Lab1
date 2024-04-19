@@ -1,5 +1,5 @@
 import unittest
-# from hypothesis import given, strategies
+from hypothesis import given, strategies
 from list import UnrolledLinkedList
 
 
@@ -31,6 +31,14 @@ class Test(unittest.TestCase):
         for i in range(1, 10):
             lst3.add(i)
         self.assertEqual(lst3.to_list(), list(range(1, 10)))
+
+    @given(strategies.lists(strategies.integers()), strategies.integers())
+    def test_add(self, initial_values, new_value):
+        lst: UnrolledLinkedList = UnrolledLinkedList(3)
+        lst.from_list(initial_values)
+        lst.add(new_value)
+        expected_result = initial_values + [new_value]
+        self.assertEqual(lst.to_list(), expected_result)
 
     def test_get(self) -> None:
         # Test getting elements from an empty list
