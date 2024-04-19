@@ -35,13 +35,13 @@ we can store and operate elements of integer type in unrolled Linked List.
 ## Changelog
 
 - 19.04.2024 - 3
-  - Add type annotations.
+- Add type annotations.
 - 19.04.2024 - 2
-  - Add test coverage.
+- Add test coverage.
 - 19.04.2024 - 1
-  - Update README. Add formal sections.
+- Update README. Add formal sections.
 - 18.04.2024 - 0
-  - Initial
+- Initial
 
 ## Design notes
 
