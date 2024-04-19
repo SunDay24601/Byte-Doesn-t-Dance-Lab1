@@ -23,12 +23,12 @@ we can store and operate elements of integer type in unrolled Linked List.
 
 ## Contribution
 
-- Hu Jinghao (1206041060@qq.com) 
+- `Hu Jinghao` (1206041060@qq.com) 
   - Add all type annotations.
   - Implement most functions.
   - Implement most of the test.
 
-- Meng Chenxu (xxx@qq.com) edited by Hu Jinghao. It still needs to be edited.
+- `Meng Chenxu` (xxx@qq.com) edited by `Hu Jinghao`. It still needs to be edited.
   - Implement all function.
   - Implement all test.
 
