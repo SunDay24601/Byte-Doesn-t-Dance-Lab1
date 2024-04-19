@@ -33,7 +33,7 @@ class Test(unittest.TestCase):
         self.assertEqual(lst3.to_list(), list(range(1, 10)))
 
     @given(strategies.lists(strategies.integers()), strategies.integers())
-    def test_add(self, initial_values, new_value):
+    def test_add_with_hypothesis(self, initial_values, new_value):
         lst: UnrolledLinkedList = UnrolledLinkedList(3)
         lst.from_list(initial_values)
         lst.add(new_value)
