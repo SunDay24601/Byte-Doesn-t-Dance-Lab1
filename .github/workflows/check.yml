@@ -33,10 +33,11 @@ jobs:
       - name: Type checks
         run: mypy . --strict
 
+      - name: Code formatting install
+        run: pip install black
+
       - name: Code formatting check
-        run:
-          pip install black
-          black --check .
+        run: black --check .
 
       # if you pretend to make a typed version of your program, you should uncomment these lines:  
       # - name: Strict type checks 
