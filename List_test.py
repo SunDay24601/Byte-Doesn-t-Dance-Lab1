@@ -34,9 +34,7 @@ class Test(unittest.TestCase):
 
     @given(strategies.lists(strategies.integers()), strategies.integers())
     def test_add_with_hypothesis(
-            self,
-            initial_values: list[int],
-            new_value: int
+        self, initial_values: list[int], new_value: int
     ) -> None:
         lst: UnrolledLinkedList = UnrolledLinkedList(3)
         lst.from_list(initial_values)

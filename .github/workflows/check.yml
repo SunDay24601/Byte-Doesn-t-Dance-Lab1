@@ -17,7 +17,7 @@ jobs:
 
       - name: Install development environment
         run: pip install pytest coverage pycodestyle pyflakes mypy
-      
+
       - name: Run tests and show coverage report
         run: |
           coverage run -m pytest --verbose
@@ -31,7 +31,10 @@ jobs:
 
       # type annotation checks
       - name: Type checks
-        run: mypy .
+        run: mypy . --strict
+
+      - name: Code formatting check
+        run: black --check .
 
       # if you pretend to make a typed version of your program, you should uncomment these lines:  
       # - name: Strict type checks 

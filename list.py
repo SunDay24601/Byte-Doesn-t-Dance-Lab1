@@ -28,8 +28,7 @@ class UnrolledLinkedList:
             return
 
         current_node: UnrolledNode = self.head  # if the head does exist
-        while current_node.next and \
-                len(current_node.values) == current_node.capacity:
+        while current_node.next and len(current_node.values) == current_node.capacity:
             current_node = current_node.next
 
         if len(current_node.values) < current_node.capacity:
@@ -64,8 +63,7 @@ class UnrolledLinkedList:
         removed: bool = False
         while current_node:
             if value in current_node.values:
-                current_node.values = \
-                    [v for v in current_node.values if v != value]
+                current_node.values = [v for v in current_node.values if v != value]
                 removed = True
                 if len(current_node.values) == 0:
                     if prev_node:
@@ -90,7 +88,7 @@ class UnrolledLinkedList:
     def reverse(self) -> None:
         current_node: Optional[UnrolledNode] = self.head
         prev_node: Optional[UnrolledNode] = None
-        while (current_node):
+        while current_node:
             current_node.values = current_node.values[::-1]
             next_node: Optional[UnrolledNode] = current_node.next
             current_node.next = prev_node
@@ -102,8 +100,9 @@ class UnrolledLinkedList:
         current_node: Optional[UnrolledNode] = self.head
         prev_node: Optional[UnrolledNode] = None
         while current_node:
-            current_node.values = \
-                [value for value in current_node.values if predicate(value)]
+            current_node.values = [
+                value for value in current_node.values if predicate(value)
+            ]
             if len(current_node.values) == 0:
                 if prev_node:
                     prev_node.next = current_node.next
@@ -115,8 +114,7 @@ class UnrolledLinkedList:
     def map(self, func: Callable[[int], Any]) -> None:
         current_node: Optional[UnrolledNode] = self.head
         while current_node:
-            current_node.values = \
-                [func(value) for value in current_node.values]
+            current_node.values = [func(value) for value in current_node.values]
             current_node = current_node.next
 
     def reduce(self, func: Callable[[Any, int], Any], init: Any) -> Any:
@@ -153,12 +151,12 @@ class UnrolledLinkedList:
             current_node = current_node.next
         return " : ".join(map(str, elements))
 
-    def __iter__(self) -> 'UnrolledLinkedList':
+    def __iter__(self) -> "UnrolledLinkedList":
         self.current_node: Optional[UnrolledNode] = self.head
         self.current_index: int = 0
         return self
 
-    def __next__(self) -> int:
+    def __next__(self) -> int:  # return the value of next element
         if not self.current_node:
             raise StopIteration
         if self.current_index < len(self.current_node.values):
