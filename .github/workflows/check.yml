@@ -34,7 +34,9 @@ jobs:
         run: mypy . --strict
 
       - name: Code formatting check
-        run: black --check .
+        run:
+          pip install black
+          black --check .
 
       # if you pretend to make a typed version of your program, you should uncomment these lines:  
       # - name: Strict type checks 
