@@ -100,9 +100,7 @@ class UnrolledLinkedList:
         current_node: Optional[UnrolledNode] = self.head
         prev_node: Optional[UnrolledNode] = None
         while current_node:
-            current_node.values = [
-                value for value in current_node.values if predicate(value)
-            ]
+            current_node.values = [value for value in current_node.values if predicate(value)]
             if len(current_node.values) == 0:
                 if prev_node:
                     prev_node.next = current_node.next
@@ -167,3 +165,43 @@ class UnrolledLinkedList:
             self.current_node = self.current_node.next
             self.current_index = 0
             return self.__next__()
+
+    def concat(self, other: "UnrolledLinkedList") -> "UnrolledLinkedList":
+        if not other.head:
+            return self
+
+        new_linked_list = UnrolledLinkedList(self.node_capacity)
+
+        # copy the lst1 to new lst
+        if self.head:
+            new_linked_list.head = UnrolledNode(self.node_capacity)
+            new_linked_list.head.values.extend(self.head.values)
+            current_node = new_linked_list.head
+        else:
+            # if lst1 is none
+            current_node = None
+
+        # check all the element in lst2
+        other_node = other.head
+        while other_node:
+            if current_node is None:
+                # if lst1 is none
+                new_linked_list.head = UnrolledNode(self.node_capacity)
+                new_linked_list.head.values.extend(other_node.values)
+                current_node = new_linked_list.head
+            elif len(current_node.values) + len(other_node.values) <= current_node.capacity:
+                # if enough to concat the lst in the current node
+                current_node.values.extend(other_node.values)
+            else:
+                # if current node is full
+                new_node = UnrolledNode(self.node_capacity)
+                new_node.values.extend(other_node.values[: current_node.capacity - len(current_node.values)])
+                other_node.values = other_node.values[current_node.capacity - len(current_node.values) :]
+                current_node.next = new_node
+                current_node = new_node
+
+            if other_node and other_node.next:
+                other_node = other_node.next
+            elif not other_node.next:
+                break
+        return new_linked_list

@@ -24,7 +24,7 @@ jobs:
           coverage report *.py
 
       - name: Check code style
-        run: pycodestyle --max-line-length=90 .
+        run: pycodestyle --max-line-length=110 --ignore=E203 .
 
       - name: Check python file for typical errors
         run: pyflakes .

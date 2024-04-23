@@ -33,9 +33,7 @@ class Test(unittest.TestCase):
         self.assertEqual(lst3.to_list(), list(range(1, 10)))
 
     @given(strategies.lists(strategies.integers()), strategies.integers())
-    def test_add_with_hypothesis(
-        self, initial_values: list[int], new_value: int
-    ) -> None:
+    def test_add_with_hypothesis(self, initial_values: list[int], new_value: int) -> None:
         lst: UnrolledLinkedList = UnrolledLinkedList(3)
         lst.from_list(initial_values)
         lst.add(new_value)
@@ -229,3 +227,25 @@ class Test(unittest.TestCase):
             tmp.append(e)
         self.assertEqual(x, tmp)
         self.assertEqual(lst2.to_list(), tmp)
+
+    def monoid_test(self) -> None:
+        # Test concatenating three lists using the associative property (monoid law)
+
+        # Creating three UnrolledLinkedList instances
+        lst1: UnrolledLinkedList = UnrolledLinkedList(3)
+        lst1.from_list([1, 2, 3])
+
+        lst2: UnrolledLinkedList = UnrolledLinkedList(3)
+        lst2.from_list([4, 5, 6])
+
+        lst3: UnrolledLinkedList = UnrolledLinkedList(3)
+        lst3.from_list([7, 8, 9])
+
+        # Concatenating lst2 and lst3 first, then concatenating lst1 with the result
+        lst4: UnrolledLinkedList = lst1.concat(lst2.concat(lst3))
+
+        # Concatenating lst1 and lst2 first, then concatenating lst3 with the result
+        lst5: UnrolledLinkedList = lst1.concat(lst2).concat(lst3)
+
+        # Asserting that the two concatenated lists are equal
+        self.assertEqual(lst4.to_list(), lst5.to_list())
